@@ -26,7 +26,7 @@ private
   end
 
   def service_params
-    params.require(:service).permit(:name, :category, :location, :distance, :price)
+    params.require(:service).permit(:name, :category, :location, :distance, :price, :photo)
   end
 
 end
