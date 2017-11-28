@@ -2,6 +2,7 @@
 <ul class="list-inline">
   <li class="list-inline-item"><div class= "navbar-wagon-item navbar-wagon-link"><%= link_to('Show my bookings', root_path) %></div></li>
   <li class="list-inline-item"><div class= "navbar-wagon-item navbar-wagon-link"><%= link_to('Add new performance', new_service_path) %></div></li>
+  <li class="list-inline-item"><%= link_to('Logout', destroy_user_session_path, method: :delete, class: "navbar-wagon-item button-logout") %></li>
 </ul>
 <% else %>
   <div class="navbar-wagon-item navbar-wagon-link"><%= link_to('New visitor? Become a ClapClap showman', new_user_registration_path)  %></div>
