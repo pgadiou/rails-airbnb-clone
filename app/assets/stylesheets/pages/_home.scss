@@ -1,1 +1,25 @@
 // Specific CSS for your home-page
+.conteneurflex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Aligner-item {
+  max-width: 50%;
+  margin-top: 1em;
+  font-size: 30px;
+  color: #bdbdbd;
+}
+
+
+
+.Aligner-item--top {
+  align-self: flex-start;
+}
+
+.Aligner-item--bottom {
+  align-self: flex-end;
+}
+
+
