@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  before_action :set_service
+  before_action :set_service, only: :show
 
   def new
     @service = Service.new
