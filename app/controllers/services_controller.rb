@@ -1,4 +1,5 @@
 class ServicesController < ApplicationController
+  before_action :set_service
 
   def new
     @service = Service.new
@@ -13,7 +14,15 @@ class ServicesController < ApplicationController
     end
   end
 
+  def show
+    @booking = Booking.new
+  end
+
 private
+
+  def set_service
+    @service = Service.find(params[:id])
+  end
 
   def service_params
     params.require(:service).permit(:name, :category, :location, :distance, :price)

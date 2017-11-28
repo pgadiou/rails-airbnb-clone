@@ -8,6 +8,10 @@ gem 'puma'
 gem 'rails', '5.1.4'
 gem 'redis'
 
+# photo upload
+gem 'cloudinary'
+gem 'carrierwave', '~> 0.11.2'
+
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
