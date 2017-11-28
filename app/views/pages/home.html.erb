@@ -1,15 +1,32 @@
 <div class="container">
   <div class="row">
+    <div id="home-title" class="col-xs-12">
+    Rencontre les talents les plus chauds de ta région
+    </div>
+  </div>
+  <div class="row">
+    <% 10.times do %>
     <div class="col-xs-12 col-sm-4">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))"> <!-- TO DO : ajouter l'url de la photo -->
-        <div class="card-category">Popular</div>
-        <div class="card-description">
-          <h2>Lanceur de nains</h2>
-          <p>12 ans d'expérience</p>
+      <div class="card">
+        <!-- image en haut de la carte -->
+        <div class="card-image" style="background-image: url(<%=image_url("lancer_nain.jpg")%>);">
         </div>
-        <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-        <a class="card-link" href="#" ></a>
+        <!-- contenu de la carte Cat/Ville/Tagline/Prix -->
+        <div class="card-content">
+          <div class="card-left-part">
+            <div class="category-city">
+              <%= "Sosie · Poitiers".upcase %>
+            </div>
+            <div class="card-description">
+              Sosie Vocal de Johnny
+            </div>
+          </div>
+          <div class="card-price">
+            <%= "35" + "€" %>
+          </div>
+        </div>
       </div>
     </div>
+    <% end %>
   </div>
 </div>
