@@ -1,6 +1,13 @@
+
+.wrapper {
+  background-color: $green;
+  padding: 20px 20px;
+}
+
 .sub-container {
+  height: 100vh;
   display: flex;
-  direction: vertical;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   text-align: center;
@@ -11,3 +18,4 @@
   height: 100vh;
   top: 0;
 }
+
