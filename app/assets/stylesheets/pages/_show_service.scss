@@ -1,0 +1,13 @@
+.sub-container {
+  display: flex;
+  direction: vertical;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+
+#top-right {
+  position: sticky;
+  height: 100vh;
+  top: 0;
+}
