@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <%= simple_form_for @service do |f| %>
+      <%= f.input :name %>
+      <%= f.input :category %>
+      <%= f.input :location %>
+      <%= f.input :distance %>
+      <%= f.input :price %>
+      <%= f.submit "Create", class: "btn-submit" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
