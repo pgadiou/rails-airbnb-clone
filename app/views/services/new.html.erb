@@ -19,8 +19,8 @@
       <div class="container subcontainer-side-by-side">
         <h3>You current offers</h3>
         <% if current_user.services.any? %>
-          <% current_user.services.each do |service| %>
-          <div class="row">
+<!--           <% current_user.services.each do |service| %>
+ -->          <div class="row">
             <div class="card">
               <!-- image en haut de la carte -->
               <div class="card-image" style="background-image: url(<%=image_url("lancer_nain.jpg")%>);">
@@ -41,12 +41,13 @@
               </div>
             </div>
           </div>
-          <% end %>
-        <% else %>
+<!--           <% end %>
+ -->        <% else %>
         <p>You don't have any services offering yet</p>
         <% end %>
       </div>
     </div>
   </div>
 </div>
+
 
