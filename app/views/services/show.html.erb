@@ -9,13 +9,15 @@
           <% sum = 0 %>
           <% counter = 1 %>
           <% @service.bookings.each do |booking| %>
-            <% sum += booking.rating %>
-            <% counter += 1 %>
+            <% if booking.rating.present? %>
+              <% sum += booking.rating %>
+              <% counter += 1 %>
+            <% end %>
           <% end %>
           <h2> Rating: <%= sum/counter %></h2>
           <ul class="unstyled-list">
           <% @service.bookings.each do |booking|%>
-            <li><%= booking.description %></li>
+            <li><%= booking.review %></li>
           <% end %>
          </ul>
         </div>
