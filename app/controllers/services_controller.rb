@@ -16,6 +16,7 @@ class ServicesController < ApplicationController
   end
 
   def show
+    # @location = params[:location]
     @booking = Booking.new
   end
 
