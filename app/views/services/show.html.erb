@@ -27,6 +27,7 @@
         <%= simple_form_for([@service, @booking]) do |f| %>
           <%= f.input :date %>
           <%= f.input :time %>
+          <%= f.input :location, input_html: {id: "location"} %>
           <%= f.submit "Book it now", class: "btn btn-success btn-block"  %>
         <% end %>
       </div>
@@ -34,3 +35,4 @@
   </div>
 </div>
 
+<!-- , value: @location -->

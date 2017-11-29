@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
 
   def create
+    binding.pry
     @booking = Booking.new(booking_params)
     @service = Service.find(params[:service_id])
     if @booking.save
@@ -10,9 +11,20 @@ class BookingsController < ApplicationController
     end
   end
 
+  def index
+    @bookings = Booking.where.not(latitude: nil, longitude: nil)
+    @markers = @bookings.map do |booking|
+      {
+        lat: booking.latitude,
+        lng: booking.longitude,
+        # infoWindow: { content: render_to_string(partial: "/bookings/map_box", locals: { booking: booking }) }
+      }
+    end
+  end
+
   private
 
   def booking_params
-    params.require(:booking).permit(:date, :time)
+    params.require(:booking).permit(:date, :time, :location)
   end
 end

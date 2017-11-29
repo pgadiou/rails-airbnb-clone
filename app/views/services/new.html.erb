@@ -4,7 +4,7 @@
       <%= simple_form_for @service do |f| %>
       <%= f.input :name %>
       <%= f.input :category %>
-      <%= f.input :location %>
+      <%= f.input :location, input_html: {id: "location"} %>
       <%= f.input :distance %>
       <%= f.input :price %>
       <%= f.input :photo %>
