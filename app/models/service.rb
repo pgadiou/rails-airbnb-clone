@@ -8,5 +8,5 @@ class Service < ApplicationRecord
   validates :price, presence: true
   mount_uploader :photo, PhotoUploader
   geocoded_by :location
-  after_validation :geocode, if: :address_changed?
+  after_validation :geocode, if: :location_changed?
 end
