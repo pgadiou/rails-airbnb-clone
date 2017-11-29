@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   <div class="navbar-wagon-item">
     <div class="dropdown">
-      <div class="navbar-wagon-item button-log" data-toggle="dropdown">
+      <div class="navbar-wagon-item button-try" id="blue" data-toggle="dropdown">
         <%= "logged in"%>
       </div>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
@@ -15,6 +15,6 @@
     </div>
   </div>
 <% else %>
-  <%= link_to('Login', new_user_session_path, class: "navbar-wagon-item button-log ")  %>
+  <%= link_to('Login', new_user_session_path, class: "navbar-wagon-item button-try ", id: "blue")  %>
   </div>
 <% end %>
