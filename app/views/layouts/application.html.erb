@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>TODO</title>
+  <title>ClapClap - Your neighbor's got talent</title>
   <%= csrf_meta_tags %>
   <%= action_cable_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
@@ -11,38 +11,14 @@
 </head>
 <body>
 
-  <div class="navbar-wagon">
-  <!-- Logo -->
-    <% link_to "/" %>
-    <a href="/" class="navbar-wagon-brand">
-    <%= image_tag "Untitled.png" %>
-    </a>
-
-  <!--TO DO : insérer le formulaire simple_form lié avec le modèle Service? -->
-    <div class="navbar-wagon-right hidden-xs hidden-sm">
-      <div class= "navbar-wagon-item navbar-wagon-link"><%= render "devise/shared/navbar_registration_or_view" %></div>
-      <%= render "devise/shared/navbar_dropdown_logged_in" %>
-    </div>
-  </div>
+  <%= render 'shared/navbar' %>
 
   <%= render 'devise/shared/flashes' %>
 
     <%= yield %>
 
+  <%= render 'shared/footer' %>
 
-  <div class="footer">
-    <div class="footer-copyright">
-      About us
-    </div>
-    <div class="footer-links">
-      <a href="#"><i class="fa fa-github"></i></a>
-      <a href="#"><i class="fa fa-instagram"></i></a>
-      <a href="#"><i class="fa fa-facebook"></i></a>
-      <a href="#"><i class="fa fa-twitter"></i></a>
-      <a href="#"><i class="fa fa-linkedin"></i></a>
-    </div>
-
-  </div>
   <%= javascript_include_tag 'application' %>
   <%= javascript_pack_tag 'application' %>
 </body>

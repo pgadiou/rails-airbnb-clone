@@ -1,17 +1,57 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-4">
-      <%= simple_form_for @service do |f| %>
-      <%= f.input :name %>
-      <%= f.input :category %>
-      <%= f.input :description %>
-      <%= f.input :location %>
-      <%= f.input :distance %>
-      <%= f.input :price %>
-      <%= f.input :photo %>
-      <%= f.input :photo_cache, as: :hidden %>
-      <%= f.submit "Create", class: "btn-submit" %>
-      <% end %>
+    <div class="col-xs-12 col-sm-6">
+      <div class="container subcontainer-side-by-side">
+        <h3>Add a new offer!</h3>
+        <%= simple_form_for @service do |f| %>
+        <%= f.input :name %>
+        <%= f.input :category %>
+        <%= f.input :description %>
+        <%= f.input :location %>
+        <%= f.input :distance %>
+        <%= f.input :price %>
+        <%= f.input :photo %>
+        <%= f.input :photo_cache, as: :hidden %>
+        <%= f.submit "Create", class: "btn-submit" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <div class="container subcontainer-side-by-side">
+        <h3>You current offers</h3>
+        <% if current_user.services.any? %>
+          <% current_user.services.each do |service| %>
+          <div class="row">
+            <div class="card">
+              <!-- image en haut de la carte -->
+              <% if service.photo.present? %>
+                <div class="card-image" style="background-image: url(<%= cl_image_path service.photo, height: 300, width: 400, crop: :fill  %>)">
+                </div>
+              <% else %>
+                <div class="card-image" style="background-image: url(<%=image_url("lancer_nain.jpg")%>)">
+                </div>
+              <% end %>
+              <!-- contenu de la carte Cat/Ville/Tagline/Prix -->
+              <div class="card-content">
+                <div class="card-left-part">
+                  <div class="category-city">
+                    <%= "#{service.name} · #{service.location}".upcase %>
+                  </div>
+                  <div class="card-description">
+                    <%= "#{service.description}" %>
+                  </div>
+                </div>
+                <div class="card-price">
+                  <%= "#{service.price} €" %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        <% else %>
+        <p>You don't have any services offering yet</p>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
