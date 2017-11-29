@@ -1,16 +1,52 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-4">
-      <%= simple_form_for @service do |f| %>
-      <%= f.input :name %>
-      <%= f.input :category %>
-      <%= f.input :location, input_html: {id: "location"} %>
-      <%= f.input :distance %>
-      <%= f.input :price %>
-      <%= f.input :photo %>
-      <%= f.input :photo_cache, as: :hidden %>
-      <%= f.submit "Create", class: "btn-submit" %>
-      <% end %>
+    <div class="col-xs-12 col-sm-6">
+      <div class="container subcontainer-side-by-side">
+        <h3>Add a new offer!</h3>
+        <%= simple_form_for @service do |f| %>
+        <%= f.input :name %>
+        <%= f.input :category %>
+        <%= f.input :location, input_html: {id: "location"} %>
+        <%= f.input :distance %>
+        <%= f.input :price %>
+        <%= f.input :photo %>
+        <%= f.input :photo_cache, as: :hidden %>
+        <%= f.submit "Create", class: "btn-submit" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <div class="container subcontainer-side-by-side">
+        <h3>You current offers</h3>
+        <% if current_user.services.any? %>
+          <% current_user.services.each do |service| %>
+          <div class="row">
+            <div class="card">
+              <!-- image en haut de la carte -->
+              <div class="card-image" style="background-image: url(<%=image_url("lancer_nain.jpg")%>);">
+              </div>
+              <!-- contenu de la carte Cat/Ville/Tagline/Prix -->
+              <div class="card-content">
+                <div class="card-left-part">
+                  <div class="category-city">
+                    <%= "#{service.name} · #{service.location}".upcase %>
+                  </div>
+                  <div class="card-description">
+                    <%= "#{service.description}" %>
+                  </div>
+                </div>
+                <div class="card-price">
+                  <%= "#{service.price} €" %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        <% else %>
+        <p>You don't have any services offering yet</p>
+        <% end %>
+      </div>
+>>>>>>> 624377dec0ccb0a6beea531cffc0bfad8e188598
     </div>
   </div>
 </div>

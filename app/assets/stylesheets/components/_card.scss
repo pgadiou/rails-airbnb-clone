@@ -1,5 +1,10 @@
 .card {
 height: 275px;
+padding: 10px;
+border-radius: 5px;
+background-color: #ededed;
+margin-bottom: 0.5em;
+box-shadow: 16px 17px 14px -12px rgba(191,191,191,0.57);
 
 }
 
@@ -40,6 +45,16 @@ height: 275px;
 
 
 }
+
+#mid-window {
+  width: 25em
+}
+
+.sunset {
+  width: 25em
+}
+
+
 // .card {
 //   // height: 175px;
 //   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
