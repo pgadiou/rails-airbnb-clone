@@ -5,32 +5,68 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
   const map = new GMaps({ el: '#map', lat: 0, lng: 0 });
   const styles = [
     {
-        "featureType": "administrative.country",
-        "elementType": "geometry",
+        "featureType": "administrative",
+        "elementType": "labels.text.fill",
         "stylers": [
             {
-                "visibility": "simplified"
-            },
-            {
-                "hue": "#ff0000"
+                "color": "#444444"
             }
         ]
     },
     {
-        "featureType": "landscape.man_made",
+        "featureType": "landscape",
         "elementType": "all",
         "stylers": [
             {
-                "color": "#ececec"
+                "color": "#f2f2f2"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "all",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "lightness": 45
             }
         ]
     },
     {
         "featureType": "road.highway",
-        "elementType": "geometry.fill",
+        "elementType": "all",
         "stylers": [
             {
-                "color": "#c2995c"
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
             }
         ]
     },
@@ -39,11 +75,14 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
         "elementType": "all",
         "stylers": [
             {
-                "color": "#a3dad6"
+                "color": "#dddddd"
+            },
+            {
+                "visibility": "on"
             }
         ]
     }
-  ];
+];
   map.addStyle({
     styles: styles,
     mapTypeId: 'map_style'
