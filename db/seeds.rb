@@ -28,7 +28,7 @@ user_3 = User.create(
 )
 
 
-chef = Service.new(name: "Auguste le Cuistot",
+chef = Service.new(name: "Chef à domicile",
                   description: "Fort d'une formation culinaire aux cotés de grands chefs de la région Lyonnaise, je saurai vous faire faire partager ma passion de la pâtisserie dans une ambiance conviviale!",
                   category: "cuisine",
                   location: "Poitiers",
@@ -39,7 +39,7 @@ chef.remote_photo_url = "http://res.cloudinary.com/damienborjesson/image/upload/
 chef.save!
 
 
-cracheur_feu = Service.new(name: "Robert le cracheur",
+cracheur_feu = Service.new(name: "Cracheur de feu",
                             description: "Je suis Eric, artiste de cirque professionnel passionné de spectacles nocturnes.Je suis spécialisé en manipulation de feu, pyrotechnie et jonglerie graphique LED.",
                             category: "cracheur de feu",
                             location: "Nantes",
@@ -50,7 +50,7 @@ cracheur_feu.remote_photo_url = "http://res.cloudinary.com/damienborjesson/image
 cracheur_feu.save!
 
 
-strip = Service.new(name: "Kevin Strip",
+strip = Service.new(name: "Chippendales",
                     description: "Je suis néo stripteaseur/performer professionnel basé à Nantes, jeune danseur de 35 ans, originaire d’Andalousie",
                     category: "chippendale",
                     location: "Paris",
@@ -61,7 +61,7 @@ strip.remote_photo_url = "http://res.cloudinary.com/damienborjesson/image/upload
 strip.save!
 
 
-developpeur = Service.new(name: "Gik, développeur full stack",
+developpeur = Service.new(name: "Développeur full stack",
                           description: "Je suis développeur full stack et me suis formé au Wagon, le 1er Boot Camp au monde! Je saurai vous faire découvrir la magie du code, et vous faire partager ma passion du Ruby, Javascript et autres HTML/CSS!",
                           category: "développeur",
                           location: "Dijon",
@@ -72,7 +72,7 @@ developpeur.remote_photo_url = "http://res.cloudinary.com/damienborjesson/image/
 developpeur.save!
 
 
-humoriste = Service.new(name: "Caroline humoriste",
+humoriste = Service.new(name: "Humoriste",
                         description: "chanteuse et humoriste, me déplace à votre domicile pour animer un mariage, une fête de famille, un anniversaire ou une soirée entre amis.",
                         category: "humoriste",
                         location: "Avignon",
@@ -83,7 +83,7 @@ humoriste.remote_photo_url = "http://res.cloudinary.com/damienborjesson/image/up
 humoriste.save!
 
 
-jongleur = Service.new(name: "Charles le jongleur",
+jongleur = Service.new(name: "Jongleur",
                       description: "Je vous initierai à lajonglerie. Mes ateliers comprennent des exercices ludiques et facilement réalisables.",
                       category: "jongleur",
                       location: "Avignon",
@@ -94,7 +94,7 @@ jongleur.remote_photo_url = "http://res.cloudinary.com/damienborjesson/image/upl
 jongleur.save!
 
 
-lanceur_nains = Service.new(name: "Joe",
+lanceur_nains = Service.new(name: "Lanceur de nain",
                             description: "Expert en lancers de nains depuis plus de 15 ans, je saurai vous faire découvrir les joies de ce loisir méconnu mais jouissif.Je peux me déplacer avec mon nain ou utiliser un nain mis à disposition par vos soins.",
                             category: "lanceur de nains",
                             location: "Lille",
@@ -105,7 +105,7 @@ lanceur_nains.remote_photo_url = "http://res.cloudinary.com/damienborjesson/imag
 lanceur_nains.save!
 
 
-lanceur_couteaux = Service.new(name: "Bob knife killer",
+lanceur_couteaux = Service.new(name: "Lanceur de couteaux",
                               description: "Laurent Mathieu, je lance des haches et des couteaux depuis huit ans. Je vais participer à la coupe du monde de ma discipline en Angleterre pendant le mois d’août 2018. Je vous propose une initiation à ma discipline chez vous, pendant une soirée.",
                               category: "lanceur de couteaux",
                               location: "Strasbourg",
@@ -116,7 +116,7 @@ lanceur_couteaux.remote_photo_url = "http://res.cloudinary.com/damienborjesson/i
 lanceur_couteaux.save!
 
 
-magicien = Service.new(name: "Magic David",
+magicien = Service.new(name: "Magicien",
                       description: "Des numéros   visuels, modernes  et pleins d'humour qui  plairont aussi  aux adultes.",
                       category: "magicien",
                       location: "Monaco",
@@ -128,7 +128,7 @@ magicien.save!
 
 
 
-masseur = Service.new(name: "Xuan",
+masseur = Service.new(name: "Masseur",
                       description: "Masseur agréé et certifié, je vous propose une gamme de massages du plus doux au plus tonique. Prenant en compte vos besoins, vos souhaits, je vous proposerai un massage totalement sur mesure.",
                       category: "masseur",
                       location: "Marseille",
@@ -139,7 +139,7 @@ masseur.remote_photo_url = "http://res.cloudinary.com/damienborjesson/image/uplo
 masseur.save!
 
 
-mixologiste = Service.new(name: "Alcoolo",
+mixologiste = Service.new(name: "Mixologue",
                          description: "Que ce soit pour un mixologue à domicile, un service de bar  à cocktails corporatif, ou de la consultation/création de cocktails nous avons la solution pour vous.",
                           category: "mixologiste",
                           location: "Lyon",
@@ -153,7 +153,7 @@ mixologiste.save!
 
 
 
-montreur_ours = Service.new(name: "Mike and my bears",
+montreur_ours = Service.new(name: "Montreur d'ours",
                             description: "Je fais partie de cette lignée de passionnés, et je saurai vous faire découvrir les joies du dressage d’ours, pour vous convaincre que ce sont nos amis!",
                             category: "montreur d'ours",
                             location: "Clermont",
@@ -165,7 +165,7 @@ montreur_ours.save!
 
 
 
-oenologue = Service.new(name: "Victor",
+oenologue = Service.new(name: "Oenologue",
                         description: "Je vous propose des cours thématiques et des initiations à la Dégustation.",
                         category: "oenologue",
                         location: "Paris",
@@ -177,7 +177,7 @@ oenologue.save!
 
 
 
-quiz_master = Service.new(name: "Jean-Pierre",
+quiz_master = Service.new(name: "Animateur de quiz",
                           description: "Doté d’une expérience de 15 ans dans l’animation de quiz dans les pubs londoniens, je saurai animer une soirée de folies, à votre convenance, sur l’ensemble des thématiques, avec du fun!",
                           category: "quizmaster",
                           location: "Toulouse",
