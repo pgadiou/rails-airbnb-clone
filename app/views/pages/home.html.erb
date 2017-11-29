@@ -6,29 +6,31 @@
   </div>
   <div class="row">
     <% Service.all.each do |service| %>
-    <div class="col-xs-12 col-sm-4">
-      <div class="card">
-        <!-- image en haut de la carte -->
-        <% if service.photo.present? %>
-          <div class="card-image" style="background-image: url(<%= cl_image_path service.photo, height: 300, width: 400, crop: :fill  %>)">
-          </div>
-        <% else %>
-          <div class="card-image" style="background-image: url(<%=image_url("lancer_nain.jpg")%>)">
-          </div>
-        <% end %>
-        <!-- contenu de la carte Cat/Ville/Tagline/Prix -->
-        <div class="card-content">
-          <div class="card-left-part">
-            <div class="category-city">
-              <%= "#{service.name} · #{service.location}".upcase %>
+     <%= link_to service_path(service) do %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card">
+          <!-- image en haut de la carte -->
+          <% if service.photo.present? %>
+            <div class="card-image" style="background-image: url(<%= cl_image_path service.photo, height: 300, width: 400, crop: :fill  %>)">
             </div>
-          </div>
-          <div class="card-price">
-            <%= "#{service.price}" + "€" %>
+          <% else %>
+            <div class="card-image" style="background-image: url(<%=image_url("lancer_nain.jpg")%>)">
+            </div>
+          <% end %>
+          <!-- contenu de la carte Cat/Ville/Tagline/Prix -->
+          <div class="card-content">
+            <div class="card-left-part">
+              <div class="category-city">
+                <%= "#{service.name} · #{service.location}".upcase %>
+              </div>
+            </div>
+            <div class="card-price">
+              <%= "#{service.price}" + "€" %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <% end %>
     <% end %>
   </div>
 </div>
