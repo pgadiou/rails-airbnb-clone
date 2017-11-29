@@ -1,0 +1,10 @@
+<div class="navbar-wagon">
+  <% link_to root_path %>
+    <a href="/" class="navbar-wagon-brand">
+    <%= image_tag "Untitled.png" %>
+    </a>
+    <div class="navbar-wagon-right hidden-xs hidden-sm">
+      <div class= "navbar-wagon-item navbar-wagon-link"><%= render "devise/shared/navbar_registration_or_view" %></div>
+      <%= render "devise/shared/navbar_dropdown_logged_in" %>
+    </div>
+</div>
