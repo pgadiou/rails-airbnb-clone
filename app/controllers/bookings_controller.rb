@@ -1,7 +1,6 @@
 class BookingsController < ApplicationController
 
   def create
-    binding.pry
     @booking = Booking.new(booking_params)
     @service = Service.find(params[:service_id])
     if @booking.save
