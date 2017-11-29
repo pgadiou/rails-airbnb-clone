@@ -1,10 +1,12 @@
 
 .wrapper {
+  margin: 20px;
   background-color: $green;
   padding: 20px 20px;
 }
 
 .sub-container {
+  padding: 10px 10px;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -19,3 +21,10 @@
   top: 0;
 }
 
+.img-service {
+}
+
+
+.service-show-right {
+
+}
