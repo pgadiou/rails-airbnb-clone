@@ -1,38 +1,65 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-4 col-md-6">
-      <div class="wrapper">
-        <div class="sub-container">
-          <p>Category: <%= @service.category.capitalize %></p>
-          <h1><%= @service.name.upcase %></h1>
-          <p><%= @service.description %></p>
-          <p>Price: <%= @service.price %>€</p>
-          <% sum = 0 %>
-          <% counter = 0 %>
-          <% @service.bookings.each do |booking| %>
-            <% if !booking.rating.nil? %>
-              <% sum += booking.rating %>
-              <% counter += 1 %>
-            <% end %>
-          <% end %>
-          <% if counter != 0  %>
-            <h2> Rating: <%= sum/counter %></h2>
-          <% else %>
-            <h2> Rating: not enough ratings</h2>
-          <% end %>
-          <ul class="unstyled-list">
-          <% @service.bookings.each do |booking|%>
-            <% if !booking.review.nil? %>
-              <li><%= booking.review %></li>
-            <% end %>
-          <% end %>
-         </ul>
+    <div class="col-xs-6">
+      <div class="sub-container">
+        <div class="wrapper wrapper-top">
+          <div class="card">
+            <div class="top-left">
+              <%= @service.category.upcase %>
+            </div>
+            <div class="top-right">
+              <%= @service.name.capitalize %>
+            </div>
+            <div class="center">
+              <%= @service.description %>
+            </div>
+            <div class="bottom-left">
+                <% sum = 0 %>
+                <% counter = 0 %>
+                <% @service.bookings.each do |booking| %>
+                  <% if !booking.rating.nil? %>
+                    <% sum += booking.rating %>
+                    <% counter += 1 %>
+                  <% end %>
+                <% end %>
+                <% if counter != 0  %>
+                  <h2> Note: <%= sum/counter %></h2>
+                <% else %>
+                  <p> Note: pas assez de commentaires</p>
+                <% end %>
+            </div>
+            <div class="bottom-right">
+              <%= @service.price %>€
+            </div>
+          </div>
         </div>
+        <% @reviews = @service.bookings.map do |booking|%>
+          <% booking.review %>
+        <% end %>
+        <% if @reviews.each do |review| %>
+          <% review.nil? %>
+        <% end %>
+          <div class="wrapper reviews">
+            <div class="card">
+              <p>Pas encore d'avis</p>
+            </div>
+          </div>
+        <% else %>
+          <div class="wrapper reviews">
+            <div class="card card-review">
+              <% @reviews.each do |review|%>
+                <ul class="list-unstyled">
+                  <li><%= review %></li>
+                </ul>
+              <% end %>
+            </div>
+          </div>
+        <% end  %>
       </div>
     </div>
-    <div class="col-xs-8 col-md-6 service-show-right">
+    <div class="col-xs-6">
       <div class="sub-container" id="top-right">
-        <%= cl_image_tag @service.photo, height: 400, width: 500, crop: :fit %>
+        <%= cl_image_tag @service.photo, height: 750, width: 530, crop: :fit, class: "img-service" %>
         <%= simple_form_for([@service, @booking]) do |f| %>
           <%= f.input :date %>
           <%= f.input :time %>
