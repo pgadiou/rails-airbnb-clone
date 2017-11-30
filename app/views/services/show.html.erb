@@ -7,15 +7,19 @@
           <h1><%= @service.name.upcase %></h1>
           <p>Price: <%= @service.price %>€</p>
           <% sum = 0 %>
-          <% counter = 1 %>
+          <% counter = 0 %>
           <% @service.bookings.each do |booking| %>
-            <% sum += booking.rating %>
-            <% counter += 1 %>
+            <% if !booking.rating.nil? %>
+              <% sum += booking.rating %>
+              <% counter += 1 %>
+            <% end %>
           <% end %>
           <h2> Rating: <%= sum/counter %></h2>
           <ul class="unstyled-list">
           <% @service.bookings.each do |booking|%>
-            <li><%= booking.description %></li>
+            <% if !booking.review.nil? %>
+              <li><%= booking.review %></li>
+            <% end %>
           <% end %>
          </ul>
         </div>

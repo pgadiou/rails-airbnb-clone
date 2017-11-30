@@ -3,6 +3,8 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @service = Service.find(params[:service_id])
+    @booking.service_id = @service.id
+    @booking.user_id = current_user.id
     if @booking.save
       redirect_to service_path(@service)
     else
@@ -15,13 +17,13 @@ class BookingsController < ApplicationController
     @markers = []
     @services.each do |service|
       @bookings = service.bookings
-      @markers_step = @bookings.map do |booking|
+      @markers_service = @bookings.map do |booking|
         {
           lat: booking.latitude,
           lng: booking.longitude,
           # infoWindow: { content: render_to_string(partial: "/bookings/map_box", locals: { booking: booking }) }
         }
-      @markers << @markers_step
+      @markers + @markers_service
       end
     end
   end
