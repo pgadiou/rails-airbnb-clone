@@ -1,26 +1,50 @@
-<div class="navbar-wagon">
+
+<div class="navbar-clapclap">
   <% link_to root_path %>
     <a href="/" class="navbar-wagon-brand">
-    <%= image_tag "Untitled.png" %>
+      <%= image_tag "Untitled.png" %>
     </a>
-    <div class="form-inline">
-      <%= form_tag root_path, method: :get do %>
-        <%= text_field_tag :query_what,
-        params[:query_what],
-        placeholder: "What?"
-        %>
-        <%= text_field_tag :query_where,
-        params[:query_where],
-        placeholder: "Where?"
-        %>
-        <%= submit_tag %>
+  <div class="form-inline formdiv">
+    <div class="first-el">
+    <%= form_tag root_path, method: :get do %>
+      <%= text_field_tag :query_what,
+      params[:query_what],
+      placeholder: "What?"
+      %>
+    </div>
+    <div class="second-el">
+      <%= text_field_tag :query_where,
+      params[:query_where],
+      placeholder: "Where?"
+      %>
+    </div>
+    <div class="third-el">
+      <%= button_tag(type: "submit", class: "btn-submit") do %>
+          <i class="fa fa-search" aria-hidden="true"></i>
       <% end %>
     </div>
-    <div class="navbar-wagon-right hidden-xs hidden-sm">
-      <div class= "navbar-wagon-item navbar-wagon-link"><%= render "devise/shared/navbar_registration_or_view" %></div>
-      <%= render "devise/shared/navbar_dropdown_logged_in" %>
-    </div>
+
+
+
+    <% end %>
+  </div>
+
+  <div class="navbar-right">
+    <%= render "devise/shared/navbar_registration_or_view" %>
+    <%= render "devise/shared/navbar_dropdown_logged_in" %>
+  </div>
+
 </div>
+
+
+
+
+
+<i class=“fa fa-search” aria-hidden=“true”></i>
+
+
+
+
 
 
 

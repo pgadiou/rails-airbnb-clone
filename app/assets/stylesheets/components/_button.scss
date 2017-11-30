@@ -1,11 +1,30 @@
 
 .btn-submit {
-  margin-bottom: 10px;
-  border-radius: 5px;
-  padding: 5px;
-  background-color: $green;
+  background-color: #01c3a7;
   color: white;
+  border: none;
+  font-family: FontAwesome;
+  text-align: center;
+  opacity: 0.9;
+  padding: 3px 8px;
 }
+
+
+.btn-submit:hover {
+  opacity: 1;
+  box-shadow: 1px 1px 1px 1px rgba(191,191,191,0.5);
+  transform: translate(0, -1px);
+
+
+
+
+}
+
+
+
+
+
+
 
 .button-try {color:#454545;background:transparent;border-width:2px;border-style: solid;border-color: #454545;position:relative;margin:1em;display:inline-block;padding:0.5em 1em;transition:all 0.3s ease-in-out;text-align:center;
 font-weight:bold}
