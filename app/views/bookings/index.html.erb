@@ -3,7 +3,7 @@
     <% @services.each do |service| %>
       <div class="row">
         <% service.bookings.each do |booking| %>
-          <% if (booking.confirmed) || (booking.confirmed.nil?) %>
+          <% if booking.confirmed || booking.confirmed.nil? %>
             <div class="col-xs-6">
               <div class="card">
                 <div class="card-booking-top-left">
@@ -20,14 +20,14 @@
                 <div class="card-booking-center-bottom">
                   <div class="accept-top">
                     <%= simple_form_for(booking) do |f| %>
-                      <%= f.input :confirmed, as: :hidden, value: true %>
-                      <%= f.submit "Avec plaisir", class: "btn btn-success btn-block"%>
+                      <%= f.input :confirmed, as: :hidden, input_html: { value: true } %>
+                      <%= f.submit "OK", class: "btn btn-success btn-block"%>
                     <% end %>
                   </div>
                   <div class="accept-bottom">
                     <%= simple_form_for(booking) do |f| %>
-                      <%= f.input :confirmed, as: :hidden, value: false %>
-                      <%= f.submit "Je ne peux pas", class: "btn btn-danger btn-block" %>
+                      <%= f.input :confirmed, as: :hidden, input_html: { value: false } %>
+                      <%= f.submit "Pas possible", class: "btn btn-danger btn-block" %>
                     <% end %>
                   </div>
                 </div>

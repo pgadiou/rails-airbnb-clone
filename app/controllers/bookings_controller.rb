@@ -38,6 +38,8 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
+    @booking.confirmed = params[:booking][:confirmed] == 'true'
+    @booking.save
     redirect_to bookings_path
   end
 
