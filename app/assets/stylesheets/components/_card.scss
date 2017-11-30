@@ -59,7 +59,54 @@ width: 30em;
 padding: 20px;
 }
 
+//Card pour view new services
+.card-small-wide {
+display: flex;
+height: 100px;
+padding: 14px;
+border-radius: 5px;
+background-color: #ededed;
+margin-bottom: 0.5em;
+box-shadow: 16px 17px 14px -12px rgba(191,191,191,0.57);
+opacity: 0.9;
+}
 
+.card-sneak-pic {
+  position: relative;
+  left: 3px;
+  width: 90px;
+  height: 70px;
+  border-radius: 5px;
+  flex: 0 0 auto;
+  vertical-align: middle;
+  margin-right: 30px;
+}
+
+.card-description-wrapper {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  position:relative
+}
+
+.card-component-small {
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.card-component-small p {
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.card-description-icon-up {
+  color: #484848;
+  margin-top: 1em;
+}
+
+.card-description-icon-down {
+  color: #484848;
+}
 
 
 // .card {
