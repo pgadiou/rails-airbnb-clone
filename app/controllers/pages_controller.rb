@@ -1,5 +1,18 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :home
+  skip_before_action :authenticate_user!
+  skip_after_action :verify_authorized
   def home
+    max_distance = 10
+    q_where = params[:query_where]
+    q_what = params[:query_what]
+    if q_where.present? && q_what.present?
+      @services = Service.where.not(latitude: nil).near(q_where, max_distance, order: false).where(category: q_what.downcase)
+    elsif q_what.present?
+      @services = Service.where(category: q_what.downcase)
+    elsif q_where.present?
+      @services = Service.where.not(latitude: nil).near(q_where, max_distance, order: false)
+    else
+      @services = Service.all
+    end
   end
 end

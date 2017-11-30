@@ -1,0 +1,14 @@
+  <div class="container" id="full-window-height-mid-width">
+    <h2>Edit service</h2>
+    <%= simple_form_for @service do |f| %>
+    <%= f.input :name, placeholder: @service.name%>
+    <%= f.input :category, placeholder: @service.category%>
+    <%= f.input :description, placeholder: @service.description %>
+    <%= f.input :location, input_html: {id: "location"}, placeholder: @service.location %>
+    <%= f.input :distance, placeholder: @service.distance %>
+    <%= f.input :price, placeholder: @service.price %>
+    <%= f.input :photo, label: "Upload new photo" %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.submit "Update", class: "btn-submit" %>
+    <% end %>
+  </div>
