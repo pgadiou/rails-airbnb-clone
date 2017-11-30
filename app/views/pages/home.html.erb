@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="row">
-    <% Service.all.each do |service| %>
+    <% @services.each do |service| %>
      <%= link_to service_path(service) do %>
       <div class="col-xs-12 col-sm-4">
         <div class="card">

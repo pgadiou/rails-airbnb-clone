@@ -3,8 +3,25 @@
     <a href="/" class="navbar-wagon-brand">
     <%= image_tag "Untitled.png" %>
     </a>
+    <div class="form-inline">
+      <%= form_tag root_path, method: :get do %>
+      <%= text_field_tag :query_what,
+      params[:query_what],
+      placeholder: "What?"
+      %>
+      <% end %>
+      <%= form_tag root_path, method: :get do %>
+      <%= text_field_tag :query_where,
+      params[:query_where],
+      placeholder: "Where?"
+      %>
+      <% end %>
+    </div>
     <div class="navbar-wagon-right hidden-xs hidden-sm">
       <div class= "navbar-wagon-item navbar-wagon-link"><%= render "devise/shared/navbar_registration_or_view" %></div>
       <%= render "devise/shared/navbar_dropdown_logged_in" %>
     </div>
 </div>
+
+
+
