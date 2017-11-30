@@ -109,6 +109,7 @@
   background-color: white;
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
   padding: 0px 3em;
+  font-size: 14px;
 }
 
 .formdiv {
@@ -119,4 +120,9 @@
 
 .second-el {
   margin: 0px 5px;
+}
+
+.align-navbar-right {
+  display: none;
+
 }
