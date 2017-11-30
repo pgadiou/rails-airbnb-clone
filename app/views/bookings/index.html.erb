@@ -1,15 +1,39 @@
 <div class="main-container">
   <div class="container">
     <% @services.each do |service| %>
-      <div class="row" value="#{service.name}">
+      <div class="row">
         <% service.bookings.each do |booking| %>
-          <div class="col-xs-6">
-            <div class="card-booking">
-              <%= booking.user.first_name %>
-              <%= booking.date %>
-              <%= booking.service %>
+          <% if booking.confirmed || booking.confirmed.nil? %>
+            <div class="col-xs-6">
+              <div class="card">
+                <div class="card-booking-top-left">
+                  <%= booking.service.name.upcase %>
+                </div>
+                <div class="card-booking-top-right">
+                </div>
+                <div class="card-booking-center-upper">
+                  <%= booking.user.first_name %>
+                </div>
+                <div class="card-booking-center-lower">
+                  <%= booking.time %>
+                </div>
+                <div class="card-booking-center-bottom">
+                  <div class="accept-top">
+                    <%= simple_form_for(booking) do |f| %>
+                      <%= f.input :confirmed, as: :hidden, input_html: { value: true } %>
+                      <%= f.submit "OK", class: "btn btn-success btn-block"%>
+                    <% end %>
+                  </div>
+                  <div class="accept-bottom">
+                    <%= simple_form_for(booking) do |f| %>
+                      <%= f.input :confirmed, as: :hidden, input_html: { value: false } %>
+                      <%= f.submit "Pas possible", class: "btn btn-danger btn-block" %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       </div>
     <% end %>
@@ -17,7 +41,7 @@
   <div
     id="map"
     style="width: 100%;
-    height: 600px;"
+    height: 800px;"
     data-markers="<%= @markers.to_json %>"
   ></div>
 </div>
