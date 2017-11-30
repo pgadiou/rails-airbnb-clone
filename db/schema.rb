@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171129093106) do
+ActiveRecord::Schema.define(version: 20171130163615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20171129093106) do
     t.string "location"
     t.integer "rating"
     t.text "review"
-    t.boolean "confirmed", default: false
+    t.boolean "confirmed"
     t.bigint "user_id"
     t.bigint "service_id"
     t.datetime "created_at", null: false

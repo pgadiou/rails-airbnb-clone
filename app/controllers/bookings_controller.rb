@@ -13,19 +13,32 @@ class BookingsController < ApplicationController
   end
 
   def index
+    @bookings_as_client = current_user.bookings.where.not(latitude: nil, longitude: nil)
+    @markers_as_service = @bookings_as_client.map do |booking|
+      {
+        lat: booking.latitude,
+        lng: booking.longitude
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+      }
+    end
     @services = current_user.services
     @markers = []
     @services.each do |service|
-      @bookings = service.bookings
+      @bookings = service.bookings.where.not(latitude: nil, longitude: nil, confirmed: false)
       @markers_service = @bookings.map do |booking|
         {
           lat: booking.latitude,
           lng: booking.longitude,
-          # infoWindow: { content: render_to_string(partial: "/bookings/map_box", locals: { booking: booking }) }
+          infoWindow: { content: booking.time }
         }
-      @markers + @markers_service
       end
+      @markers += @markers_service
     end
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    redirect_to bookings_path
   end
 
   private

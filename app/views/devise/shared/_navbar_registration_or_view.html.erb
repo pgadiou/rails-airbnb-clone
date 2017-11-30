@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <%= link_to('Show my bookings', root_path, class: "navbar-wagon-item button-try", id: "borderless")%>
+  <%= link_to('Show my bookings', bookings_path, class: "navbar-wagon-item button-try", id: "borderless")%>
   <%= link_to('Add new performance', new_service_path, class: "navbar-wagon-item button-try", id: "borderless")%>
 <% else %>
   <%= link_to('New visitor? Become a ClapClap showman', new_user_registration_path, class: "navbar-wagon-item button-try", id: "borderless")  %>
