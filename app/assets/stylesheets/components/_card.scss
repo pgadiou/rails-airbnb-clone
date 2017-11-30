@@ -5,7 +5,10 @@ border-radius: 5px;
 background-color: #ededed;
 margin-bottom: 0.5em;
 box-shadow: 16px 17px 14px -12px rgba(191,191,191,0.57);
+opacity: 0.9;
+font-weight: bold;
 }
+
 
 .card-image {
   height: 200px;
@@ -34,7 +37,9 @@ box-shadow: 16px 17px 14px -12px rgba(191,191,191,0.57);
 }
 
 .card:hover {
-  opacity: 0.7;
+box-shadow: 25px 25px 25px -12px rgba(191,191,191,0.57);
+transform: translate(0, -7px);
+opacity: 1;
 }
 
 #mid-window {
@@ -44,6 +49,17 @@ box-shadow: 16px 17px 14px -12px rgba(191,191,191,0.57);
 .sunset {
   width: 25em
 }
+
+.card-column {
+border-radius: 10px;
+background-color: #ededed;
+box-shadow: 16px 17px 14px -12px rgba(191,191,191,0.57);
+margin-top: 10px;
+width: 30em;
+padding: 20px;
+}
+
+
 
 
 // .card {

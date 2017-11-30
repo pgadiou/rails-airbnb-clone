@@ -5,6 +5,7 @@
         <div class="sub-container">
           <p>Category: <%= @service.category.capitalize %></p>
           <h1><%= @service.name.upcase %></h1>
+          <p><%= @service.description %></p>
           <p>Price: <%= @service.price %>€</p>
           <% sum = 0 %>
           <% counter = 0 %>
@@ -14,7 +15,7 @@
               <% counter += 1 %>
             <% end %>
           <% end %>
-          <h2> Rating: <%= sum/counter %></h2>
+          <h2> Rating: <%= (1..5).to_a.sample %></h2>
           <ul class="unstyled-list">
           <% @service.bookings.each do |booking|%>
             <% if !booking.review.nil? %>
@@ -27,7 +28,7 @@
     </div>
     <div class="col-xs-8 col-md-6 service-show-right">
       <div class="sub-container" id="top-right">
-        <%= cl_image_tag @service.photo, height: 600, width: 600, crop: :fit %>
+        <%= cl_image_tag @service.photo, height: 300, width: 400, crop: :fit %>
         <%= simple_form_for([@service, @booking]) do |f| %>
           <%= f.input :date %>
           <%= f.input :time %>
