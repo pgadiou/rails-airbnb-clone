@@ -1,16 +1,18 @@
 <div class="main-container">
   <div class="container">
-    <div class="row ">
-    <% @bookings.each do |booking| %>
-      <div class="col-xs-12">
-        <div class="card-booking">
-          <%= booking.user.first_name %>
-          <%= booking.date %>
-          <%= booking.service %>
-        </div>
+    <% @services.each do |service| %>
+      <div class="row" value="#{service.name}">
+        <% service.bookings.each do |booking| %>
+          <div class="col-xs-6">
+            <div class="card-booking">
+              <%= booking.user.first_name %>
+              <%= booking.date %>
+              <%= booking.service %>
+            </div>
+          </div>
+        <% end %>
       </div>
-      <% end %>
-    </div>
+    <% end %>
   </div>
   <div
     id="map"

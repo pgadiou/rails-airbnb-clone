@@ -13,13 +13,18 @@ class BookingsController < ApplicationController
   end
 
   def index
-    @bookings = Booking.where.not(latitude: nil, longitude: nil)
-    @markers = @bookings.map do |booking|
-      {
-        lat: booking.latitude,
-        lng: booking.longitude,
-        # infoWindow: { content: render_to_string(partial: "/bookings/map_box", locals: { booking: booking }) }
-      }
+    @services = current_user.services
+    @markers = []
+    @services.each do |service|
+      @bookings = service.bookings
+      @markers_service = @bookings.map do |booking|
+        {
+          lat: booking.latitude,
+          lng: booking.longitude,
+          # infoWindow: { content: render_to_string(partial: "/bookings/map_box", locals: { booking: booking }) }
+        }
+      @markers + @markers_service
+      end
     end
   end
 
