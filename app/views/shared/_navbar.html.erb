@@ -5,16 +5,15 @@
     </a>
     <div class="form-inline">
       <%= form_tag root_path, method: :get do %>
-      <%= text_field_tag :query_what,
-      params[:query_what],
-      placeholder: "What?"
-      %>
-      <% end %>
-      <%= form_tag root_path, method: :get do %>
-      <%= text_field_tag :query_where,
-      params[:query_where],
-      placeholder: "Where?"
-      %>
+        <%= text_field_tag :query_what,
+        params[:query_what],
+        placeholder: "What?"
+        %>
+        <%= text_field_tag :query_where,
+        params[:query_where],
+        placeholder: "Where?"
+        %>
+        <%= submit_tag %>
       <% end %>
     </div>
     <div class="navbar-wagon-right hidden-xs hidden-sm">
