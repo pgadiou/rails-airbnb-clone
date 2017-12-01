@@ -63,8 +63,8 @@ strip.save!
 
 developpeur = Service.new(name: "Développeur full stack",
                           description: "Je suis développeur full stack et me suis formé au Wagon, le 1er Boot Camp au monde! Je saurai vous faire découvrir la magie du code, et vous faire partager ma passion du Ruby, Javascript et autres HTML/CSS!",
-                          category: "développeur",
-                          location: "Dijon",
+                          category: "frisson",
+                          location: "Paris",
                           distance: "6",
                           price:"70")
 developpeur.user = user_1
@@ -86,7 +86,7 @@ humoriste.save!
 jongleur = Service.new(name: "Jongleur",
                       description: "Je vous initierai à lajonglerie. Mes ateliers comprennent des exercices ludiques et facilement réalisables.",
                       category: "jongleur",
-                      location: "Avignon",
+                      location: "Paris",
                       distance: "7",
                       price:"50")
 jongleur.user = user_1
@@ -155,8 +155,8 @@ mixologiste.save!
 
 montreur_ours = Service.new(name: "Montreur d'ours",
                             description: "Je fais partie de cette lignée de passionnés, et je saurai vous faire découvrir les joies du dressage d’ours, pour vous convaincre que ce sont nos amis!",
-                            category: "montreur d'ours",
-                            location: "Clermont",
+                            category: "extreme",
+                            location: "Paris",
                             distance: "6",
                             price:"100")
 montreur_ours.user = user_1
