@@ -26,7 +26,7 @@ class BookingsController < ApplicationController
     @services = current_user.services
     @markers = []
     @services.each do |service|
-      @bookings_provider = @bookings.where.not(latitude: nil, longitude: nil, confirmed: false).where(service: service)
+      @bookings_provider = @bookings.where.not(latitude: nil, longitude: nil).where(confirmed: nil).or(@bookings.where.not(latitude: nil, longitude: nil).where(confirmed: true)).where(service: service)
       @markers_service = @bookings_provider.map do |booking|
         {
           lat: booking.latitude,
