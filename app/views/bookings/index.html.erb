@@ -15,7 +15,7 @@
                   <%= booking.user.first_name %>
                 </div>
                 <div class="card-booking-center-lower">
-                  <%= booking.time %>
+                  <%= booking.date.strftime("%a %d %b at %I:%M %p") %>
                 </div>
                 <div class="card-booking-center-bottom">
                   <div class="accept-top">

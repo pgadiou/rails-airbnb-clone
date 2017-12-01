@@ -1,10 +1,9 @@
-<div class="container">
+<div class="container with-padding">
   <div class="row">
-    <div class="col-xs-4 col-md-6">
-      <div class="wrapper">
-        <div class="sub-container">
+    <div class="col-xs-12 col-md-6">
+      <div class="card" id="full-window">
           <p>Category: <%= @service.category.capitalize %></p>
-          <h1><%= @service.name.upcase %></h1>
+          <h3><%= @service.name.upcase %></h1>
           <p><%= @service.description %></p>
           <p>Price: <%= @service.price %>€</p>
           <% sum = 0 %>
@@ -16,9 +15,9 @@
             <% end %>
           <% end %>
           <% if counter != 0  %>
-            <h2> Rating: <%= sum/counter %></h2>
+            <h3> Rating: <%= sum/counter %></h3>
           <% else %>
-            <h2> Rating: not enough ratings</h2>
+            <h3> Rating: Not rated yet</h3>
           <% end %>
           <ul class="unstyled-list">
           <% @service.bookings.each do |booking|%>
@@ -27,19 +26,27 @@
             <% end %>
           <% end %>
          </ul>
-        </div>
       </div>
     </div>
-    <div class="col-xs-8 col-md-6 service-show-right">
-      <div class="sub-container" id="top-right">
-        <%= cl_image_tag @service.photo, height: 400, width: 500, crop: :fit %>
-        <%= simple_form_for([@service, @booking]) do |f| %>
-          <%= f.input :date %>
-          <%= f.input :time %>
-          <%= f.input :location, input_html: {id: "location"} %>
-          <%= f.submit "Book it now", class: "btn btn-success btn-block"  %>
-        <% end %>
-      </div>
+    <div class="col-xs-12 col-md-6">
+        <div class="card" id="mid-window-height-flex">
+          <%= cl_image_tag @service.photo, class: "card-pic-show", height: 240, width: 340, crop: :fill %>
+          </div>
+        <div class="card" id="mid-window-height-flex">
+          <% if current_user == @service.user %>
+            <%= link_to('Update post', edit_service_path(@service), class: "btn btn-success btn-block", id:"button-user-service")%>
+            <%= link_to('Delete post', service_path(@service), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-block", id:"button-user-service")%>
+
+          <% else %>
+            <div class="card-component-form">
+            <%= simple_form_for([@service, @booking]) do |f| %>
+              <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
+              <%= f.input :location, input_html: {id: "location"} %>
+              <%= f.submit "Book it now", class: "btn btn-success btn-block"  %>
+            <% end %>
+            </div>
+          <% end %>
+        </div>
     </div>
   </div>
 </div>
