@@ -21,7 +21,8 @@
         <h3>You current offers</h3>
         <% if current_user.services.any? %>
           <% current_user.services.each do |service| %>
-            <div class="row">
+            <div class="row" id="kill-link">
+              <%= link_to service_path(service) do %>
               <div class="card-small-wide">
                 <%= cl_image_tag service.photo, class: "card-sneak-pic", height: 80, width: 100, crop: :fill %>
                 <div class="card-description-wrapper">
@@ -36,6 +37,7 @@
                   </div>
                 </div>
               </div>
+              <% end %>
             </div>
           <% end %>
         <% else %>
