@@ -5,8 +5,14 @@
 
 #card-booking {
   position: relative;
-  text-align: center;
 }
+
+#card-booking-confirmed {
+  position: relative;
+  text-align: center;
+  opacity: 1;
+}
+
 
 .card-booking-top-left {
   position: absolute;
@@ -21,21 +27,35 @@
 }
 
 .card-booking-center-upper {
-  position: absolute;
-  top: 30%;
-  left: 40%;
+
 }
 
 .card-booking-center-lower {
-  position: absolute;
-  top: 40%;
-  left: 25%;
+}
+
+.position {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .card-booking-center-bottom {
   position: absolute;
   top: 60%;
   left: 30%;
+}
+
+.card-booking-center-bottom-accepted {
+  position: absolute;
+  top: 70%;
+  left: 30%;
+}
+
+.card-booking-center-bottom-edit {
+  position: absolute;
+  top: 65%;
+  left: 43%;
+  text-align: center;
 }
 
 .accept-top {

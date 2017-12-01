@@ -3,7 +3,12 @@ class ServicesController < ApplicationController
   skip_after_action :verify_authorized, only: :show
   before_action :set_service, only: [:show, :edit, :update, :destroy]
 
-  def new
+  def index
+      @services = Service.all
+      @services = policy_scope(Booking)
+  end
+
+ def new
     @service = Service.new
     authorize @service
   end

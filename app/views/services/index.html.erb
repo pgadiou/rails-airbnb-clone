@@ -1,11 +1,11 @@
-      <%= link_to('As a performer', bookings_path, class: "navbar-wagon-item button-try", id: "blue")%>
-      <%= link_to('As a client', services_path, class: "navbar-wagon-item button-try", id: "borderless")%>
+      <%= link_to('As a performer', bookings_path, class: "navbar-wagon-item button-try", id: "borderless")%>
+      <%= link_to('As a client', services_path, class: "navbar-wagon-item button-try", id: "blue")%>
 <div class="main-container">
   <div class="container">
       <div class="row">
         <div class="underline"><h3>Confirmed bookings</h3></div>
-        <% @services.each do |service| %>
-        <% service.bookings.each do |booking| %>
+        <% @bookings_as_client = Booking.all.where.not(latitude: nil, longitude: nil).where(user: current_user) %>
+        <% @bookings_as_client.each do |booking| %>
           <% if booking.confirmed %>
             <div class="col-xs-6">
               <div class="card position" id="card-booking-confirmed">
@@ -14,11 +14,11 @@
                 </div>
                 <div class="card-booking-top-right">
                 </div>
-                <div class="card-booking-center-upper">
-                  <p><%= booking.user.first_name %></p>
+                <div class="card-booking-center-upper-confirmed">
+                  <p><%= booking.service.user.first_name %></p>
                   <p><%= booking.date.strftime("%a %d %b at %I:%M %p") %></p>
                 </div>
-                <div class="card-booking-center-bottom-confirmed">
+                <div class="card-booking-center-bottom">
                   <div class="accept-top">
                     <div class="btn btn-success btn-block">Confirmed</div>
                   </div>
@@ -27,12 +27,10 @@
             </div>
           <% end %>
         <% end %>
-        <% end %>
       </div>
       <div class="row">
         <div class="underline"><h3>Pending bookings</h3></div>
-        <% @services.each do |service| %>
-        <% service.bookings.each do |booking| %>
+        <% @bookings_as_client.each do |booking| %>
           <% if booking.confirmed.nil? %>
             <div class="col-xs-6">
               <div class="card position" id="card-booking-confirmed">
@@ -42,34 +40,19 @@
                 <div class="card-booking-top-right">
                 </div>
                 <div class="card-booking-center-upper">
-                  <p><%= booking.user.first_name %></p>
+                  <p><%= booking.service.user.first_name %></p>
                   <p><%= booking.date.strftime("%a %d %b at %I:%M %p") %></p>
                 </div>
-                <div class="card-booking-center-bottom">
-                  <div class="accept-top">
-                    <%= simple_form_for(booking) do |f| %>
-                      <%= f.input :confirmed, as: :hidden, input_html: { value: true } %>
-                      <%= f.submit "OK", class: "btn btn-success btn-block"%>
-                    <% end %>
-                  </div>
-                  <div class="accept-bottom">
-                    <%= simple_form_for(booking) do |f| %>
-                      <%= f.input :confirmed, as: :hidden, input_html: { value: false } %>
-                      <%= f.submit "Pas possible", class: "btn btn-danger btn-block" %>
-                    <% end %>
-                  </div>
+                <div class="card-booking-center-bottom-edit">
+                    <%= link_to('Edit', services_path, class: "btn btn-success btn-block")%>
+                    <%= link_to('Delete', booking_path(booking), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-block") %>
                 </div>
               </div>
             </div>
           <% end %>
         <% end %>
-        <% end %>
+      </div>
       </div>
     </div>
-  <div
-  id="map"
-    style="width: 100%;
-    height: 800px;"
-    data-markers="<%= @markers.to_json %>"
-  ></div>
+  <div>
 </div>
