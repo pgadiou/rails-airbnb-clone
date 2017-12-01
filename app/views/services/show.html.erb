@@ -1,18 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-6">
+    <div class="col-xs-12 col-sm-6">
       <div class="sub-container">
         <div class="wrapper wrapper-top">
-          <div class="card">
+          <div class="card card-service" id="text-center-card">
             <div class="top-left">
               <%= @service.category.upcase %>
             </div>
             <div class="top-right">
               <%= @service.name.capitalize %>
             </div>
-            <div class="center">
-              <%= @service.description %>
-            </div>
+            <%= @service.description %>
             <div class="bottom-left">
                 <% sum = 0 %>
                 <% counter = 0 %>
@@ -40,7 +38,7 @@
           <% review.nil? %>
         <% end %>
           <div class="wrapper reviews">
-            <div class="card">
+            <div class="card card-service">
               <p>Pas encore d'avis</p>
             </div>
           </div>
@@ -54,12 +52,14 @@
               <% end %>
             </div>
           </div>
-        <% end  %>
+        <% end %>
       </div>
     </div>
-    <div class="col-xs-6">
+    <div class="col-xs-12 col-sm-6">
       <div class="sub-container" id="top-right">
-        <%= cl_image_tag @service.photo, height: 750, width: 530, crop: :fit, class: "img-service" %>
+        <div class="image">
+          <%= cl_image_tag @service.photo, height: 325, width: 500, crop: :fill, class: "img-service" %>
+        </div>
         <%= simple_form_for([@service, @booking]) do |f| %>
           <%= f.input :date %>
           <%= f.input :time %>
