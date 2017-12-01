@@ -29,7 +29,7 @@ class BookingsController < ApplicationController
         {
           lat: booking.latitude,
           lng: booking.longitude,
-          infoWindow: { content: booking.time }
+          infoWindow: { content: booking.date }
         }
       end
       @markers += @markers_service

@@ -15,9 +15,10 @@
                   <%= booking.user.first_name %>
                 </div>
                 <div class="card-booking-center-lower">
-                  <%= booking.time %>
+                  <%= booking.date %>
                 </div>
                 <div class="card-booking-center-bottom">
+                  <% if %>
                   <div class="accept-top">
                     <%= simple_form_for(booking) do |f| %>
                       <%= f.input :confirmed, as: :hidden, input_html: { value: true } %>
@@ -27,7 +28,7 @@
                   <div class="accept-bottom">
                     <%= simple_form_for(booking) do |f| %>
                       <%= f.input :confirmed, as: :hidden, input_html: { value: false } %>
-                      <%= f.submit "Pas possible", class: "btn btn-danger btn-block" %>
+                      <%= f.submit "I can't", class: "btn btn-danger btn-block" %>
                     <% end %>
                   </div>
                 </div>

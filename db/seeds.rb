@@ -18,7 +18,7 @@ user_2 = User.create(
   email: "tyuiop@gmail.com",
   password: "12345678",
   first_name: "Philippe",
-  last_name: "Badiou"
+  last_name: "Gadiou"
 )
 user_3 = User.create(
   email: "wxcvbn@gmail.com",
@@ -187,5 +187,28 @@ quiz_master.user = user_2
 quiz_master.remote_photo_url = "http://res.cloudinary.com/damienborjesson/image/upload/v1511950715/quizmaster_f3jimg.jpg"
 quiz_master.save!
 
+booking_1 = Booking.new(date: Time.now,
+location: "Paris")
+booking_1.service = oenologue
+booking_1.user = user_2
+booking_1.save!
 
+booking_2 = Booking.new(date: Time.now,
+location: "Clermont")
+booking_2.service = montreur_ours
+booking_2.user = user_3
+booking_2.save!
+
+booking_4 = Booking.new(date: Time.now,
+location: "Clermont")
+booking_4.service = montreur_ours
+booking_4.user = user_2
+booking_4.save!
+
+
+booking_3 = Booking.new(date: Time.now,
+location: "Paris")
+booking_3.service = mixologiste
+booking_3.user = user_3
+booking_3.save!
 
