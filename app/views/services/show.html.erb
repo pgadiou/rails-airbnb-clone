@@ -1,43 +1,74 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-4 col-md-6">
-      <div class="wrapper">
-        <div class="sub-container">
-          <p>Category: <%= @service.category.capitalize %></p>
-          <h1><%= @service.name.upcase %></h1>
-          <p><%= @service.description %></p>
-          <p>Price: <%= @service.price %>€</p>
-          <% sum = 0 %>
-          <% counter = 0 %>
-          <% @service.bookings.each do |booking| %>
-            <% if !booking.rating.nil? %>
-              <% sum += booking.rating %>
-              <% counter += 1 %>
-            <% end %>
-          <% end %>
-          <% if counter != 0  %>
-            <h2> Rating: <%= sum/counter %></h2>
-          <% else %>
-            <h2> Rating: not enough ratings</h2>
-          <% end %>
-          <ul class="unstyled-list">
-          <% @service.bookings.each do |booking|%>
-            <% if !booking.review.nil? %>
-              <li><%= booking.review %></li>
-            <% end %>
-          <% end %>
-         </ul>
+    <div class="col-xs-12 col-sm-6">
+      <div class="sub-container">
+        <div class="wrapper wrapper-top">
+          <div class="card card-service" id="text-center-card">
+            <div class="top-left">
+              <%= @service.category.upcase %>
+            </div>
+            <div class="top-right">
+              <%= @service.name.capitalize %>
+            </div>
+            <%= @service.description %>
+            <div class="bottom-left">
+                <% sum = 0 %>
+                <% counter = 0 %>
+                <% @service.bookings.each do |booking| %>
+                  <% if !booking.rating.nil? %>
+                    <% sum += booking.rating %>
+                    <% counter += 1 %>
+                  <% end %>
+                <% end %>
+                <% if counter != 0  %>
+                  <h2> Note: <%= sum/counter %></h2>
+                <% else %>
+                  <p> Note: pas assez de commentaires</p>
+                <% end %>
+            </div>
+            <div class="bottom-right">
+              <%= @service.price %>€
+            </div>
+          </div>
         </div>
+        <% @reviews = @service.bookings.map do |booking|%>
+          <% booking.review %>
+        <% end %>
+        <% if @reviews.each do |review| %>
+          <% review.nil? %>
+        <% end %>
+          <div class="wrapper reviews">
+            <div class="card card-service">
+              <p>Pas encore d'avis</p>
+            </div>
+          </div>
+        <% else %>
+          <div class="wrapper reviews">
+            <div class="card card-review">
+              <% @reviews.each do |review|%>
+                <ul class="list-unstyled">
+                  <li><%= review %></li>
+                </ul>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
-    <div class="col-xs-8 col-md-6 service-show-right">
+    <div class="col-xs-12 col-sm-6">
       <div class="sub-container" id="top-right">
-        <%= cl_image_tag @service.photo, height: 400, width: 500, crop: :fit %>
-        <%= simple_form_for([@service, @booking]) do |f| %>
-          <%= f.input :date %>
-          <%= f.input :time %>
-          <%= f.input :location, input_html: {id: "location"} %>
-          <%= f.submit "Book it now", class: "btn btn-success btn-block"  %>
+        <div class="image">
+          <%= cl_image_tag @service.photo, height: 325, width: 500, crop: :fill, class: "img-service" %>
+        </div>
+        <% if current_user == @service.user %>
+          <%= link_to('Update this service', edit_service_path(@service), class: "btn btn-success btn-block align")%>
+          <%= link_to('Delete this service', service_path(@service), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-block") %>
+        <% else %>
+          <%= simple_form_for([@service, @booking]) do |f| %>
+            <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
+            <%= f.input :location, input_html: {id: "location"} %>
+            <%= f.submit "Book it now", class: "btn btn-success btn-block"  %>
+          <% end %>
         <% end %>
       </div>
     </div>
