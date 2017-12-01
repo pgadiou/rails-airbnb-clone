@@ -7,7 +7,7 @@
         <% @services.each do |service| %>
         <% service.bookings.each do |booking| %>
           <% if booking.confirmed %>
-            <div class="col-xs-6">
+            <div class="col-xs-12 col-sm-6">
               <div class="card position" id="card-booking-confirmed">
                 <div class="card-booking-top-left">
                   <%= booking.service.name.upcase %>
@@ -34,7 +34,7 @@
         <% @services.each do |service| %>
         <% service.bookings.each do |booking| %>
           <% if booking.confirmed.nil? %>
-            <div class="col-xs-6">
+            <div class="col-xs-12 col-sm-6">
               <div class="card position" id="card-booking-confirmed">
                 <div class="card-booking-top-left">
                   <%= booking.service.name.upcase %>
