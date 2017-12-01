@@ -60,11 +60,15 @@
         <div class="image">
           <%= cl_image_tag @service.photo, height: 325, width: 500, crop: :fill, class: "img-service" %>
         </div>
-        <%= simple_form_for([@service, @booking]) do |f| %>
-          <%= f.input :date %>
-          <%= f.input :time %>
-          <%= f.input :location, input_html: {id: "location"} %>
-          <%= f.submit "Book it now", class: "btn btn-success btn-block"  %>
+        <% if current_user == @service.user %>
+          <%= link_to('Update this service', edit_service_path(@service), class: "btn btn-success btn-block align")%>
+          <%= link_to('Delete this service', service_path(@service), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-block") %>
+        <% else %>
+          <%= simple_form_for([@service, @booking]) do |f| %>
+            <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
+            <%= f.input :location, input_html: {id: "location"} %>
+            <%= f.submit "Book it now", class: "btn btn-success btn-block"  %>
+          <% end %>
         <% end %>
       </div>
     </div>
