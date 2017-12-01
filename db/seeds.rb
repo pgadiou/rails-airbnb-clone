@@ -188,4 +188,41 @@ quiz_master.remote_photo_url = "http://res.cloudinary.com/damienborjesson/image/
 quiz_master.save!
 
 
+booking_1 = Booking.new(date: Time.now,
+location: "Paris", review:  "Magnifique prestation", rating: 5)
+booking_1.service = oenologue
+booking_1.user = user_2
+booking_1.save!
+
+booking_2 = Booking.new(date: Time.now,
+location: "Clermont", review:  "Je recommande à 60%", rating: 3)
+booking_2.service = montreur_ours
+booking_2.user = user_3
+booking_2.save!
+
+booking_4 = Booking.new(date: Time.now,
+location: "Clermont", review: "Mes amis ont adoré", rating: 5)
+booking_4.service = montreur_ours
+booking_4.user = user_2
+booking_4.save!
+
+
+booking_5 = Booking.new(date: Time.now,
+location: "Paris", review: "Ses blagues sur Javascript m'ont fait hurler de rire", rating: 5)
+booking_5.service = developpeur
+booking_5.user = user_3
+booking_5.save!
+
+booking_6 = Booking.new(date: Time.now,
+location: "Paris", review: "Sa démonstration du MVC était exceptionnelle", rating: 4)
+booking_6.service = developpeur
+booking_6.user = user_3
+booking_6.save!
+
+booking_7 = Booking.new(date: Time.now,
+location: "Paris", review: "La meilleure soirée de ma vie", rating: 4)
+booking_7.service = developpeur
+booking_7.user = user_3
+booking_7.save!
+
 

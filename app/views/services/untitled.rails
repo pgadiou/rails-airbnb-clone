@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6">
-      <div class="sub-container">
+      <div class="sub-container" id="leftcontainer">
         <div class="wrapper wrapper-top">
           <div class="card card-service" id="text-center-card">
             <div class="top-left">
-              <%= @service.category.capitalize %>
-            </div>
-            <div class="top-right">
+<!--               <%= @service.category.upcase %>
+ -->            </div>
+            <div class="service-name">
               <%= @service.name.capitalize %>
             </div>
             <%= @service.description %>
@@ -21,12 +21,7 @@
                   <% end %>
                 <% end %>
                 <% if counter != 0  %>
-                  <% starcounter = (sum/counter).round(0) %>
-                  <% starcounter.times do %>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                  <% end %>
-
-
+                  <h2> Note: <%= sum/counter %></h2>
                 <% else %>
                   <p> Note: pas assez de commentaires</p>
                 <% end %>
@@ -36,13 +31,12 @@
             </div>
           </div>
         </div>
-        <div class="link-to-home">
-        <%= link_to('Back', root_path)%>
-        </div>
         <% @reviews = @service.bookings.map do |booking|%>
           <% booking.review %>
         <% end %>
-        <% if @reviews.all?  {|i| i.nil?} %>
+        <% if @reviews.each do |review| %>
+          <% review.nil? %>
+        <% end %>
           <div class="wrapper reviews">
             <div class="card card-service">
               <p>Pas encore d'avis</p>
@@ -53,7 +47,7 @@
             <div class="card card-review">
               <% @reviews.each do |review|%>
                 <ul class="list-unstyled">
-                  <li style = " font-style: italic"> << <%= review %> >> </li>
+                  <li><%= review %></li>
                 </ul>
               <% end %>
             </div>
@@ -80,42 +74,5 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-<div class="container">
-  <div class="profil">
-    <div class="profil-description">
-      <div class="profil-name"></div>
-      <div class="profil-description"></div>
-      <div class="profil-rating"></div>
-    </div>
-    <div class="profil-picture"></div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!-- , value: @location -->
