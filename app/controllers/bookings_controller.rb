@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    authorize @booking
     @service = Service.find(params[:service_id])
     @booking.service_id = @service.id
     @booking.user_id = current_user.id
@@ -13,7 +14,8 @@ class BookingsController < ApplicationController
   end
 
   def index
-    @bookings_as_client = current_user.bookings.where.not(latitude: nil, longitude: nil)
+    @bookings = policy_scope(Booking)
+    @bookings_as_client = @bookings.where.not(latitude: nil, longitude: nil).where(user: current_user)
     @markers_as_service = @bookings_as_client.map do |booking|
       {
         lat: booking.latitude,
@@ -24,12 +26,12 @@ class BookingsController < ApplicationController
     @services = current_user.services
     @markers = []
     @services.each do |service|
-      @bookings = service.bookings.where.not(latitude: nil, longitude: nil, confirmed: false)
-      @markers_service = @bookings.map do |booking|
+      @bookings_provider = @bookings.where.not(latitude: nil, longitude: nil, confirmed: false).where(service: service)
+      @markers_service = @bookings_provider.map do |booking|
         {
           lat: booking.latitude,
           lng: booking.longitude,
-          infoWindow: { content: booking.time }
+          infoWindow: { content: booking.date }
         }
       end
       @markers += @markers_service
@@ -38,6 +40,7 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
+    authorize @booking
     @booking.confirmed = params[:booking][:confirmed] == 'true'
     @booking.save
     redirect_to bookings_path
@@ -46,6 +49,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:date, :time, :location)
+    params.require(:booking).permit(:date, :location)
   end
 end
